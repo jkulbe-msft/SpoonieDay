@@ -1,0 +1,316 @@
+@title A day in the life of a spoonie
+[[intro]]:
+@set sp = 0
+
+**A day in the life of a spoonie**
+
+The world is full of people looking just fine. You meet them in the street, you work alongside them, they are your friends and family. 
+
+But did you know that many of those persons may look fine on the outside, but they have a chronic illness that affects their energy levels? Autoimmunne disorders like Multiple Sclerosis or Lupus affect 3% of the population, chronic migraine 2% and depression 5% of adults. Many of these illnesses can be treated with medication, but not yet cured, only slowed. 
+
+A common effect of all of these illnesses is fatigue, a state of uncomfortable tiredness and exhaustion that neither rest nor sleep nor coffee can resolve. Fatigue is not caused by normal life, but rather an effect of the eternal battle raging within the bodies of the affected persons.
+
+Chances are high that you know somebody who is affected, but you may not even know it.
+
+Imagine having to pay for each everyday activity with a spoonful of energy that needs to be precisely managed and planned for, so you don't run out of spoons throughout the day. In an emergency, you may borrow a spoon or two from the next day, but you know that when you do, you will need to pay back those spoons. Those persons sometimes call themselves "spoonies".
+
+This game puts you in the shoes of a spoonie. Your goal is to navigate a full working day without running out of spoons, while collecting the maximum number of achievement points.
+
+Click the links in the text to make your choices. You can replay this game as often as you like to find an optimal path through your day.
+
+Choose wisely, here comes the [[alarm clock...]](start)
+
+[[score]]:
+
+{if sp<=5:{@state=You feel tired.}}
+{if sp<=3:{@state=You feel very tired. You long for the end of the day.}}
+{if sp<=0:{@state=You feel extremely tired. You can barely keep your eyes open. You know that any more activity will draw from tomorrow's spoon supply.}}
+{state}  
+Spoons left: {sp}  
+Achievement points: {ap}
+
+[[result]]:
+
+{if sp<=5:{@finalscore=You feel tired, but you still had some energy left at the end of the day. Try a more active route next time to maximise your achievements. You will feel slightly more energetic tomorrow but the amount of energy you can carry forward is limited.}}
+
+{if sp<=3:{@finalscore=You feel very tired and don't have much energy left a the end of the day. Maybe try one more active choice next time you play to maximise your achievements. You will feel slightly more energetic tomorrow but the amount of energy you can carry forward is limited.}}
+
+{if sp=0:{@finalscore=Spot on. You feel extremely tired but you don't see any way you could have been more active during the day without borrowing energy from the next one.}}
+
+{if sp<0:{@finalscore=You feel extremely tired. You expended more energy than you had and had to borrow from tomorrow. You will start the next day on a reduced energy level. Hopefully you'll have a weekend soon so you can spend it in bed to recover your spoons.}}
+
+{finalscore}
+
+Spoons left: {sp}  
+Achievement points: {ap}/20
+
+[[restart]]:
+    jQuery("#squiffy").squiffy("restart");
+Restarting...
+
+[[start]]:
+@set ap = 0
+@inc sp 20
+@set groceries = 0
+@set state = You feel OK.
+{if sp>20:{@sp=21}}
+
+The alarm clock wakes you up after a long night's sleep, but you don't feel rested.
+
+You can: [[Get up immediately]](a1) or [[hit the snooze button]](c1).
+
+{score}
+
+[[breakfast]]:
+Time for breakfast. You can choose between: [[Making a healthy breakfast with freshly squeezed orange juice and a bowl of fruits, nuts and some porridge]](a3)  
+-or-  
+[[a simple breakfast with a cup of coffee and a piece of toast]](c3).
+
+{score}
+
+[[ready for work]]:
+Get ready for work. Do you [[take a shower and put on new presentable clothes so you look your best during the business day]](a4)  
+-or-  
+[[skip the shower and throw on yesterday's comfy clothes. You can always keep the camera off in Teams, right?]](c4)
+
+{score}
+
+[[socialcall]]:
+Pre-work social call with your team mates before you start your class delivery. Do you [[join the call and socialize with your colleagues]](a5)  
+-or-  
+[[skip the call and prepare for your delivery]](c5)?
+
+{score}
+
+[[delivery1]]:
+Prime time, you're delivering the morning session. You can:  
+[[Power through until lunch with just one quick break in between - your learners expect as much content as you can give]](a6)!
+-or-  
+[[Incorporate hourly breaks]](c6).
+
+{score}
+
+[[lunchtime]]:
+Lunch time. You can: [[Go shopping for a fresh salad and buy ingredients for a healthy dinner while you're at the store]](a7). 
+-or-  
+[[Raid the fridge for a quick sandwich and rest on the couch]](c7)
+{score}
+
+[[delivery2]]:
+The afternoon delivery session is in full swing. You can:  
+[[Power through until the evening with just one quick break in between - your learners expect as much content as you can give]](a8)!
+-or-  
+[[Incorporate hourly breaks]](c8).
+
+{score}
+
+[[eod]]:
+Phew, you made it through the delivery. A reminder pops up - there's a team meeting coming up. Do you...  
+[[...attend the meeting]](a9)  
+-or-  
+[[...skip the meeting and catch the recording later]](c9)
+
+{score}
+
+[[dinner]]:
+Dinner time. You...  
+[[..cook a healthy dinner with a load of veggies.]](a11)  
+-or-  
+[[..order a pizza.]](c11)
+
+{score}
+
+[[evening]]:
+You're almost done with the day. Do you...  
+[[...catch up on a few updates to Microsoft Learn, post about them on LinkedIn and think about a future contribution to your D&I goals.]](a12)  
+-or-  
+[[...flop down on the bed and fire up Netflix]](c12).
+
+{score}
+
+[[asleep]]:
+{result}
+
+Thank you for playing "A day in the life of a spoonie". What appears to be a normal day can be a challenge for a spoonie. Spoonies need to carefully plan the day to get by with the spoons that you have. All choices have consequences, and it takes some time to learn how to balance the available amount of energy with the achievements we want to make during the day. Every day is a new challenge, so your achievement points will reset.
+
+You can choose to [[start a new day with your current energy level]](start). 
+You can also completely [[restart]] the game.
+
+[[a1]]:
+@dec sp 2
+@inc ap 1
+You're up early, the weather is great. You can: [[Get some exercise]](a2)  
+-or-  
+[[skip exercise and take your time to get up]](c2).
+
+{score}
+
+[[c1]]:
+@inc sp 1
+You're still tired, but somewhat more rested. You realize it's an hour later and you missed your chance to exercise. Time to get up and go for [[breakfast]].
+
+{score}
+
+[[a2]]:
+@dec sp 3
+@inc ap 2
+You take a nice morning jog on your favorite trail. You feel you already have accomplished something today, but wonder if you will be able to hold up all day. Time for [[breakfast]].
+
+{score}
+
+[[c2]]:
+You stretch and yawn and slowly get out of bed. No need to stress yourself that early in the day. Time to go for [[breakfast]].
+
+{score}
+
+[[a3]]:
+@dec sp 2
+@inc ap 1
+Now that was both a healthy and a tasty choice, though making juice and building the perfect breakfast bowl certainly took some work. Time to get [[ready for work]].
+
+{score}
+
+[[c3]]:
+@dec sp 1
+@inc ap 0
+That was a quick and easy breakfast. You are grateful you have an all-in-one coffee machine that only takes the press of a button to produce a nice hot cup. You remember the days when a cup of coffee would make you wide awake. These days, it's just delicious with no extra energy, but you still get jiggy if you have too much.  
+Time to get [[ready for work]].
+{score}
+
+[[a4]]:
+@dec sp 2
+@inc ap 1
+A nice warm shower and a fresh set of clothes feel so good. [[You're ready for the day.]](socialcall)
+
+{score}
+
+[[c4]]:
+@dec sp 1
+@inc ap 0
+Efficiency first. If you leave the camera off, nobody will notice. [[You're ready for the day.]](socialcall)
+
+{score}
+
+[[a5]]:
+@dec sp 1
+@inc ap 1
+You join the social call with your colleagues. It feels good to have a few minutes to network with your peers. Time flies and you have to rush to your [[morning delivery session]](delivery1).
+
+{score}
+
+[[c5]]:
+You take your time to prepare your morning delivery session. Maybe you will get a chance to talk to your colleagues later. On to the [[morning delivery session]](delivery1).
+
+{score}
+
+[[a6]]:
+@dec sp 5
+@inc ap 1
+You power throgh your morning session with just one quick coffee break. You manage to present an amazing amount of content. You wonder if your learners were able to keep up and you feel exhausted. You're looking forward to [[lunchtime]].
+
+{score}
+
+[[c6]]:
+@dec sp 4
+@inc ap 2
+You make sure that you have a break every hour. You have to skip a few slides to stay within the prescribed course timing, but you have a feeling that your learners had a chance to absorb the content. You feel slightly exhausted, but [[lunchtime]] arrives quickly.
+
+{score}
+
+[[a7]]:
+@dec sp 2
+@inc ap 2
+@set groceries = 1
+You buy a fresh salad and while you're at the store, you also pick up some fresh groceries for later. You feel good about making a healthy choice and you're glad to arrive back home again. After eating the salad, it's time for your [[afternoon delivery session]](delivery2).
+
+{score}
+
+[[c7]]:
+@dec sp 1
+@inc ap 0
+You cobble together a quick sandwich with leftovers from the fridge and flop down on the couch. You remember a recent employee wellness meeting about healthy eating, but right now you're just glad you have something to eat and you can rest a while. After resting, it's time for the [[afternoon delivery session]](delivery2).
+
+{score}
+
+[[a8]]:
+@dec sp 5
+@inc ap 1
+You power throgh your afternoon session with just one quick coffee break. You manage to present an amazing amount of content. You wonder if your learners were able to keep up and you feel exhausted. You're looking forward to the [[end of your working day]](eod).
+
+{score}
+
+[[c8]]:
+@dec sp 4
+@inc ap 2
+You make sure that you have a break every hour. You have to skip a few slides to stay within the prescribed course timing, but you have a feeling that your learners had a chance to absorb the content. You feel slightly exhausted, but the [[end of your working day]](eod) arrives quickly.
+
+{score}
+
+[[a9]]:
+@dec sp 2
+@inc ap 1
+You join the team meeting. Do you [[actively attend and contribute to the meeting with a presentation you created]](a10) or [[sit back and watch without contributing]](c10)?
+
+{score}
+
+[[c9]]:
+You missed the opportunity to contribute to the meeting and be visible to your colleagues. You are beginning to wonder if your manager thinks you are lazy because this is not the first meeting you missed while your calendar was free.
+
+You will need to expend a spoon on another day to catch up on the recording. You're hungry. Time to make [[dinner]].
+
+{score}
+
+[[a10]]:
+@dec sp 3
+@inc ap 2
+Your presentation is great and your colleagues thank you for your valuable contribution. Your manager seems to be impressed. You feel like you have accomplished a lot.  
+{if sp<=5:You feel tired and yawn during the meeting. A colleague makes a comment about partying less hard next time and others laugh. You wonder what kind of impression you're giving to your everyone.}
+You're hungry. Time to make [[dinner]].
+
+{score}
+
+[[c10]]:
+@dec sp 1
+You watch the meeting without saying much. It's a good thing you can use an avatar so your colleagues don't see how tired you are. Instead of saying something, you type a few comments in the chat and use the reaction features. You hope your manager noticed your presence.
+{if sp<=5:You feel tired and yawn audibly during the meeting. A colleague makes a comment about partying less hard next time and others laugh. You wonder what kind of impression you're giving to your everyone.}  
+You're hungry. Time to make [[dinner]].
+
+{score}
+
+[[a11]]:
+@dec sp 2
+@inc ap 2
+{if groceries=1:{@ap+=1}}
+You cook a nice healthy meal. Preparation takes energy, but you know that eating well is key to feeling well. In the back of your mind, the thought remains that no matter what diet you follow, it will not alter the course of your chronic illness. Right now, you still feel very good about having made a healthy choice.
+
+{if groceries=1:You're glad went to the grocery store during your lunch break. Your veggies are extra fresh.}
+
+You were thinking ahead and cooked another portion that you put in the freezer. Some day you will be very grateful for it.
+
+Time to [clean] up the kitchen.
+
+{score}
+
+[clean]:
+@dec sp 1
+The kitchen is a mess. You don't feel like it, but you definitely need to clean up. After cleaning up, you're looking forward to the [[evening]].
+
+{score}
+
+[[c11]]:
+@dec sp 1
+You place a quick online order with your favorite pizza delivery service. A few minutes later, the doorbell rings. It's a quick and easy solution, and you like pizza, but you long for a freshly made healthy meal. Also you're beggining to wonder how much money you already spent on delivieries this month. Still, pizza is pizza. You're looking forward to the [[evening]].
+
+{score}
+
+[[a12]]:
+@dec sp 3
+@inc ap 2
+You get busy for another late-night session. You find a great new Azure feature to post about, and you gain several likes and reposts on LinkedIn. You also jot down a few ideas for an upcoming D&I workshop where you plan to create a game about energy management. You feel like you have have achieved a lot and go to bed. Tomorrow is going to be a new day. For now, you fall [[asleep]].
+
+{score}
+
+[[c12]]:
+Time to conserve energy. You settle down on your bed, set the alarm clock and launch Netflix to watch a few episodes of your favorite show. After a few minutes, you fall [[asleep]].   
+
+{score}
